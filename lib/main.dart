@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Together-Assignment',
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: Home(),
     );
   }
 }
