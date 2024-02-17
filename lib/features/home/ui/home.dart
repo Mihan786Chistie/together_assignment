@@ -13,6 +13,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final HomeBloc homeBloc = HomeBloc();
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -41,6 +42,11 @@ class _HomeState extends State<Home> {
           },
           builder: (context, state) {
             switch (state.runtimeType) {
+              case HomeLoadingState:
+                isLoading = true;
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
               case HomeLoadedSuccessState:
                 final successState = state as HomeLoadedSuccessState;
                 return Container(
