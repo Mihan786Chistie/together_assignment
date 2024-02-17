@@ -5,14 +5,15 @@ import 'package:together_assignment/features/home/ui/home.dart';
 import 'package:together_assignment/features/home/util/themes.dart';
 
 void main() {
+  // Initialize the HomeBloc
   final HomeBloc homeBloc = HomeBloc();
+  // Run the application with the HomeBloc provided as a value using BlocProvider
   runApp(BlocProvider.value(value: homeBloc, child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
