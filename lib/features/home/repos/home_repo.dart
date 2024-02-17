@@ -5,7 +5,6 @@ import 'package:together_assignment/features/home/models/home_data_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:welltested_annotation/welltested_annotation.dart';
 
-@Welltested()
 class HomeRepo {
   static final http.Client _client = http.Client();
   static const int _limit = 10;

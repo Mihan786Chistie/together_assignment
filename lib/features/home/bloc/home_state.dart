@@ -1,21 +1,25 @@
 part of 'home_bloc.dart';
 
 @immutable
-sealed class HomeState {}
+abstract class HomeState {}
 
-sealed class HomeActionState extends HomeState {}
+abstract class HomeActionState extends HomeState {}
 
-final class HomeInitialState extends HomeState {}
+class HomeInitialState extends HomeState {}
 
-final class HomeLoadingState extends HomeState {}
+class HomeLoadingState extends HomeState {}
 
-final class HomeLoadedSuccessState extends HomeState {
+class LoadMoreHomeEvent extends HomeEvent {
+  LoadMoreHomeEvent();
+}
+
+class HomeLoadedSuccessState extends HomeState {
   final List<HomeDataModel> datas;
 
   HomeLoadedSuccessState({required this.datas});
 }
 
-final class HomeErrorState extends HomeState {
+class HomeErrorState extends HomeState {
   final String errorMessage;
   HomeErrorState(this.errorMessage);
 }

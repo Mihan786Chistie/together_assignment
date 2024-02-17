@@ -15,6 +15,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   int page = 1;
+  final List<HomeDataModel> _dataList = [];
 
   FutureOr<void> homeInitialFetchEvent(
       HomeInitialFetchEvent event, Emitter<HomeState> emit) async {
@@ -29,5 +30,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   FutureOr<void> loadMoreHomeEvent(
-      LoadMoreHomeEvent event, Emitter<HomeState> emit) {}
+      LoadMoreHomeEvent event, Emitter<HomeState> emit) async {
+    page += 1;
+    try {
+      List<HomeDataModel> datas = await HomeRepo.fetchHomeData(page);
+      emit(HomeLoadedSuccessState(datas: datas));
+    } catch (e) {
+      emit(HomeErrorState("Failed to fetch data. Please try again later."));
+    }
+  }
 }
