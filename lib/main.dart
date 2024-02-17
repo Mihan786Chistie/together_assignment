@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:together_assignment/features/home/bloc/home_bloc.dart';
 import 'package:together_assignment/features/home/ui/home.dart';
+import 'package:together_assignment/features/home/util/themes.dart';
 
 void main() {
-  runApp(const MyApp());
+  // Initialize the HomeBloc
+  final HomeBloc homeBloc = HomeBloc();
+  // Run the application with the HomeBloc provided as a value using BlocProvider
+  runApp(BlocProvider.value(value: homeBloc, child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Together-Assignment',
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      theme: ThemeClass.lightTheme,
+      home: const Home(),
     );
   }
 }

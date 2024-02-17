@@ -26,7 +26,7 @@ class HomeDataModel {
         id: map['id']?.toInt() ?? 0,
         title: map['title'] ?? '',
         description: map['description'] ?? '',
-        imageUrl: map['imageUrl'] ?? '');
+        imageUrl: map['image_url'] ?? '');
   }
 
   String toJson() => json.encode(toMap());
